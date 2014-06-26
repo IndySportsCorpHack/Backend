@@ -1,0 +1,42 @@
+@main("Messages") {
+	
+	<div class="modal fade" id="addMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Add a message</h3>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="messageField">Message</label>
+                            <input type="text" class="form-control" id="messageField" placeholder="Enter message"
+                                data-bind="value: messageField"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-link" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" data-bind="click: saveMessage">Add message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div>
+        <ul class="pager">
+            <li class="previous" data-bind="css: { disabled: prevMessagesUrl() == null }">
+                <a href="#" data-bind="click: prevMessages">Previous</a>
+            </li>
+            <li class="next" data-bind="css: { disabled: nextMessagesUrl() == null }">
+                <a href="#" data-bind="click: nextMessages">Next</a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled messages" data-bind="foreach: messages">
+            <li data-bind="text: $data.message"></li>
+        </ul>
+    </div>
+
+}
